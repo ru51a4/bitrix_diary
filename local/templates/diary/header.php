@@ -184,7 +184,7 @@
         global $USER;
         ?>
         <div class="auth d-flex flex-row align-items-center">
-            <a href="/login">
+            <a href="/forms/user">
                 <div class="nickname-author"><?= $USER->GetLogin() ?></div>
             </a>
             <a href="/login/?logout=yes&<?= bitrix_sessid_get() ?>">

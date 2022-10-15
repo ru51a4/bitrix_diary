@@ -57,4 +57,16 @@ class DiaryAjaxController extends Controller
         return ["id" => $ID];
     }
 
+    public static function updateuserAction($param2 = '', $param1 = '')
+    {
+
+        \Bitrix\Main\Loader::includeModule('iblock');
+        $user = new CUser;
+        $fields = array(
+            "UF_AVATAR" => $param1
+        );
+        global $USER;
+        $user->Update($USER->GetID(), $fields);
+        return ["id" => $ID];
+    }
 }

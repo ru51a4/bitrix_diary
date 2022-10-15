@@ -21,7 +21,7 @@
                             Блогер
                         </p></div>
                     <img class="avatar"
-                         src="http://ufland.moy.su/camera_a.gif">
+                         src="<?=($cUSER["UF_AVATAR"]) ? $cUSER["UF_AVATAR"] : "http://ufland.moy.su/camera_a.gif"?>">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><?=$diary["Fields"]["NAME"]?></h5>
