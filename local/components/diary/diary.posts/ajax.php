@@ -24,7 +24,7 @@ class PostAjaxController extends Controller
      */
     public static function addAction($param2 = '', $param1 = '')
     {
-        $text = $param1;
+        $text = htmlspecialchars_decode($param1);
         \Bitrix\Main\Loader::includeModule('iblock');
         $el = new \CIBlockElement;
 

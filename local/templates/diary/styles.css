@@ -64,7 +64,7 @@ footer {
 }
 
 .card-bottom {
-    align-self: flex-end;
+    /*/align-self: flex-end;*/
 }
 
 footer {

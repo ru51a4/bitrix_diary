@@ -17,15 +17,19 @@ if (CModule::IncludeModule('iblock')) {
     ///
     $arFilter = array("IBLOCK_SECTION_ID" => $arParams["SECTION_ID"]);
     $res = CIBlockElement::GetList(array(), $arFilter, false, array(), array());
+
     while ($ob = $res->GetNextElement()) {
         $arItem['Fields'] = $ob->GetFields();
-        $arItem["Fields"]["PREVIEW_TEXT"] = \BBCode::parseBB($arItem["Fields"]["PREVIEW_TEXT"]);
         $arItem['PROP'] = $ob->GetProperties();
         $arResult["ITEMS"][] = $arItem;
     }
-
     $arResult["REPLY"] = \BBCode::replyShit(array_map(function ($item) {
         return ["id" => $item["Fields"]["ID"], "message" => $item["Fields"]["PREVIEW_TEXT"]];
     }, $arResult["ITEMS"]));
+    $arResult["ITEMS"] = array_map(function ($item) {
+        $item["Fields"]['PREVIEW_TEXT'] = \BBCode::parseBB($item["Fields"]["PREVIEW_TEXT"]);
+        return $item;
+    }, $arResult["ITEMS"]);
+
 }
 $this->IncludeComponentTemplate();
