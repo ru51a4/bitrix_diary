@@ -11,7 +11,8 @@ $arUrlRewrite = array(
     4 =>
         array(
             'CONDITION' => '#^/forms/posts/([0-9]+)#',
-            'RULE' => 'SECTION_ID=\\$1',
+            'RULE' => 'mode=read&POST_ID=$1',
+            'ID' => 'diary:diary.editpost',
             'PATH' => '/forms/posts/index.php',
             'SORT' => 100,
         ),
