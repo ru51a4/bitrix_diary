@@ -20,11 +20,12 @@ class BBCode
     public static function parseBB($str, $postId = null)
     {
         $result = self::lex(htmlspecialchars_decode($str));
+        var_dump($result);
         $generateHTML = function ($arr, $postId) {
             $result = '';
             foreach ($arr as $item) {
-                if ($item['tag'] == "img") {
-                    $result .= "<img class=\"post_image\" src=" . $item['t'] . ">";
+                if ($item['tag'] == "image") {
+                    $result .= "<img class=\"post_image\" src=" . 'https://' . $item['t'] . ">";
                 } else if ($item['tag'] == "b") {
                     $result .= "<b>" . $item['t'] . "</b>";
                 } else if ($item["tag"] == "reply") {
