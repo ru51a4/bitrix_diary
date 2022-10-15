@@ -61,8 +61,13 @@
 <? endif; ?>
 <script>
 
+    let init = true;
 
     function add(event) {
+        if (!init) {
+            return;
+        }
+        init = false;
         var request = BX.ajax.runComponentAction('diary:diary.posts', 'add', {
             mode: 'ajax',
             data: {

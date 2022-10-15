@@ -23,7 +23,12 @@ $APPLICATION->SetTitle("Новости");
         </div>
     </div>
     <script>
+        let init = true;
         let addBlog = (event) => {
+            if (!init) {
+                return;
+            }
+            init = false;
             var request = BX.ajax.runComponentAction('diary:diary.dashboard', 'add', {
                 mode: 'ajax',
                 data: {
