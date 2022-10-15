@@ -31,16 +31,14 @@
                     </p>
                     <div class="card-bottom">
                         <div style="">
-                            <? if (isset($post["Fields"]["REPLY"])): ?>
-                                <? foreach ($arResult["REPLY"][$post["Fields"]["ID"]] as $reply):?>
-                                    <span style="background-color: unset!important; color: #FF6600;"
-                                          pid="<?= $post["Fields"]["ID"] ?>" id="<?= $reply ?>"
-                                          class="reply">>><?= $reply ?></span>
-                                <?endforeach; ?>
-                            <? endif ?>
+                            <? foreach ($arResult["REPLY"][intval($post["Fields"]["ID"])] as $reply): ?>
+                                <span style="background-color: unset!important; color: #FF6600;"
+                                      pid="<?= $post["Fields"]["ID"] ?>" id="<?= $reply ?>"
+                                      class="reply">>><?= $reply ?></span>
+                            <? endforeach; ?>
                         </div>
                         <div>
-                            <a href="/editpost/1">edit</a>
+                            <a href="#">edit</a>
                         </div>
                     </div>
                 </div>
