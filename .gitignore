@@ -1,0 +1,62 @@
+# local files
+.DS_Store
+Thumbs.db
+/.idea
+*.local.php
+
+# bitrix specific
+/bitrix
+
+# start add bitrix/modules/aspro.max/include.php and bitrix/modules/aspro.max/lib/functions/CAsproMaxCustom.php
+# !/bitrix
+
+# /bitrix/*
+# !/bitrix/modules/
+
+# /bitrix/modules/*
+# !/bitrix/modules/aspro.max/
+
+# /bitrix/modules/aspro.max/*
+# !/bitrix/modules/aspro.max/include.php
+# !/bitrix/modules/aspro.max/lib/
+
+# /bitrix/modules/aspro.max/lib/*
+# !/bitrix/modules/aspro.max/lib/functions/
+
+# /bitrix/modules/aspro.max/lib/functions/*
+# !/bitrix/modules/aspro.max/lib/functions/CAsproMaxCustom.php
+# end add bitrix/modules/aspro.max/include.php and bitrix/modules/aspro.max/lib/functions/CAsproMaxCustom.php
+
+/upload
+/desktop_app
+/pages
+/aspro_regions
+/*.xml
+/*.log
+/*.sh
+/*.sql
+/*.tar
+/*.tar.gz*
+/*.zip
+/google*.html
+/yandex_*.html
+/yandex_*.txt
+/robots.txt
+/sitemap.xml
+/sitemap_*.xml
+/sitemap_*.php
+/sitemap-*.php
+/restore.php
+/bitrix_server_test.php
+/backup_site_refro
+/exported_xml/am/am.xml
+/local/exchange/multisearch.xml
+/exported_xml/satom/
+/seo-sitemap/
+/s_test.php
+/log_askaron_pro1c__t7a33c7a.txt
+/log_askaron_pro1c__o06s5m3f.txt
+/local/console/logs/
+/local/console/utils/log.txt
+/.htaccess_back*
+/old07.10.htaccess
