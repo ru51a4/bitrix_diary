@@ -1,6 +1,6 @@
 <div class="row">
     <div class="my-4">
-        <a href="/diary/createform">
+        <a href="/forms/blog">
             <button type="submit" class="btn btn-primary">Создать блог</button>
         </a>
     </div>

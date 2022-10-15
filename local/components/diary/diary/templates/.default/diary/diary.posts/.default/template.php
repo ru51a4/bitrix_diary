@@ -23,11 +23,21 @@
                 </div>
                 <div class="card-body diary">
                     <div class="card--header">
+                        <button id="<?= $post["Fields"]["ID"] ?>"
+                                style=" font-size: 10px; padding: 0px; max-height: 25px;"
+                                class="btn btn-primary btn-reply">>><?= $post["Fields"]["ID"] ?></button>
                     </div>
                     <p class="card-text"> <?= $post["Fields"]["PREVIEW_TEXT"] ?>
                     </p>
                     <div class="card-bottom">
                         <div style="">
+                            <? if (isset($post["Fields"]["REPLY"])): ?>
+                                <? foreach ($arResult["REPLY"][$post["Fields"]["ID"]] as $reply):?>
+                                    <span style="background-color: unset!important; color: #FF6600;"
+                                          pid="<?= $post["Fields"]["ID"] ?>" id="<?= $reply ?>"
+                                          class="reply">>><?= $reply ?></span>
+                                <?endforeach; ?>
+                            <? endif ?>
                         </div>
                         <div>
                             <a href="/editpost/1">edit</a>
