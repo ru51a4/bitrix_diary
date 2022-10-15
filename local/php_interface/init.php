@@ -20,7 +20,6 @@ class BBCode
     public static function parseBB($str, $postId = null)
     {
         $result = self::lex(htmlspecialchars_decode($str));
-        var_dump($result);
         $generateHTML = function ($arr, $postId) {
             $result = '';
             foreach ($arr as $item) {
