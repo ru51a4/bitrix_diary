@@ -10,10 +10,10 @@ $arUrlRewrite = array(
         ),
     4 =>
         array(
-            'CONDITION' => '#^/forms/posts/([0-9]+)#',
+            'CONDITION' => '#^/demo/diary/editpost/([0-9]+)#',
             'RULE' => 'mode=read&POST_ID=$1',
-            'ID' => 'diary:diary.editpost',
-            'PATH' => '/forms/posts/index.php',
+            'ID' => 'diary.diary',
+            'PATH' => '/demo/index.php',
             'SORT' => 100,
         ),
     0 =>

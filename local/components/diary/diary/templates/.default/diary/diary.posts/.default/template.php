@@ -39,7 +39,7 @@
                             <? endforeach; ?>
                         </div>
                         <div>
-                            <a href="/forms/posts/<?= $post["Fields"]["ID"] ?>">edit</a>
+                            <a href="/demo/diary/editpost/<?= $post["Fields"]["ID"] ?>">edit</a>
                         </div>
                     </div>
                 </div>
