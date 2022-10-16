@@ -6,6 +6,7 @@ if (CModule::IncludeModule('iblock')) {
     $el = CIBlockElement::GetByID(intval($_REQUEST["POST_ID"]));
     if ($ar_res = $el->GetNext())
         $arResult["EL"] = $ar_res;
+
     if ($_REQUEST["message"]) {
         global $USER;
         if ($arResult["EL"]["MODIFIED_BY"] == $USER->GetID()) {

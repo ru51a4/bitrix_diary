@@ -8,7 +8,7 @@
 </div>
 <div class="row add-post">
     <div class="mt-3">
-        <form action="/forms/posts/<?= $_REQUEST["POST_ID"] ?>"
+        <form action="/demo/diary/editpost/<?= $_REQUEST["POST_ID"] ?>"
               method="post" class="col-12">
             <div>
                             <textarea class="form-control" name="message" id="exampleFormControlTextarea1"

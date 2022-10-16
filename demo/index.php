@@ -6,8 +6,6 @@ if (!$USER->IsAuthorized()) {
     header('Location: /login', true, 301);
 
 }
-
-$APPLICATION->SetTitle("Статьи о домашних животных");
 ?><? $APPLICATION->IncludeComponent(
     "diary:diary",
     "",
@@ -17,6 +15,7 @@ $APPLICATION->SetTitle("Статьи о домашних животных");
         "SEF_URL_TEMPLATES" => array(
             "dashboard" => "",
             "posts" => "diary/#SECTION_ID#",
+            "editpost" => "diary/editpost/#POST_ID#",
         ),
     )
 ); ?><?php
