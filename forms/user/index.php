@@ -15,7 +15,9 @@ $APPLICATION->SetTitle("Новости");
                     <input type="text" value="<?=$cUSER["UF_AVATAR"]?>" class="form-control" name="avatar" id="exampleFormControlInput1">
                 </div>
                 <div class="mb-3">
-                    <button type="submit" onclick="update(event)" class="btn btn-primary">Изменить</button>
+                    <button type="submit" onclick="update(event)" class="btn btn-primary">Изменить
+
+                    </button>
 
                 </div>
             </div>

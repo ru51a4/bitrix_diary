@@ -39,7 +39,9 @@
                             <? endforeach; ?>
                         </div>
                         <div>
+                            <?if($cUSER["ID"] == \Bitrix\Main\Engine\CurrentUser::get()->getId()):?>
                             <a href="/demo/diary/editpost/<?= $post["Fields"]["ID"] ?>">edit</a>
+                            <?endif;?>
                         </div>
                     </div>
                 </div>
