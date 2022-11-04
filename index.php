@@ -1,4 +1,4 @@
 <?php
-header('Location: /demo',true, 301);
+header('Location: /demo/dashboard/1',true, 301);
 
 ?>

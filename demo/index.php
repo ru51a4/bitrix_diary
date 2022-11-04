@@ -13,7 +13,7 @@ if (!$USER->IsAuthorized()) {
         "SEF_FOLDER" => "/demo/",
         "SEF_MODE" => "Y",
         "SEF_URL_TEMPLATES" => array(
-            "dashboard" => "",
+            "dashboard" => "dashboard/#PAGE_ID#",
             "posts" => "diary/#SECTION_ID#",
             "editpost" => "diary/editpost/#POST_ID#",
         ),

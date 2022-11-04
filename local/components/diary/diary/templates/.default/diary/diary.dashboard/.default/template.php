@@ -7,37 +7,51 @@
 </div>
 <div class="row">
     <div class="d-flex flex-column justify-content-start dashboard">
-        <?foreach ($arResult["ITEMS"] as $diary): ?>
-        <a href="/demo/diary/<?=$diary["Fields"]["ID"]?>">
-            <div class="col-12 card d-flex flex-row">
-                <div class="card-avatar d-flex flex-column justify-content-start">
-                    <div class="nickname nickname-author">
-                        <?
-                        $cUSER = CUser::GetByID($diary["Fields"]['MODIFIED_BY']);
-                        $cUSER = $cUSER->Fetch();
-                        ?>
-                        <b><?= $cUSER["LOGIN"] ?></b>
-                        <p class="status">
-                            Блогер
-                        </p></div>
-                    <img class="avatar"
-                         src="<?=($cUSER["UF_AVATAR"]) ? $cUSER["UF_AVATAR"] : "http://ufland.moy.su/camera_a.gif"?>">
+        <? foreach ($arResult["ITEMS"] as $diary): ?>
+            <a href="/demo/diary/<?= $diary["Fields"]["ID"] ?>">
+                <div class="col-12 card d-flex flex-row">
+                    <div class="card-avatar d-flex flex-column justify-content-start">
+                        <div class="nickname nickname-author">
+                            <?
+                            $cUSER = CUser::GetByID($diary["Fields"]['MODIFIED_BY']);
+                            $cUSER = $cUSER->Fetch();
+                            ?>
+                            <b><?= $cUSER["LOGIN"] ?></b>
+                            <p class="status">
+                                Блогер
+                            </p></div>
+                        <img class="avatar"
+                             src="<?= ($cUSER["UF_AVATAR"]) ? $cUSER["UF_AVATAR"] : "http://ufland.moy.su/camera_a.gif" ?>">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $diary["Fields"]["NAME"] ?></h5>
+                        <p class="card-text"><?= $diary["Fields"]["DESCRIPTION"] ?></p>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title"><?=$diary["Fields"]["NAME"]?></h5>
-                    <p class="card-text"><?=$diary["Fields"]["DESCRIPTION"]?></p>
-                </div>
-            </div>
-        </a>
-        <?endforeach;?>
+            </a>
+        <? endforeach; ?>
     </div>
 </div>
 <div class="row mt-4">
     <nav aria-label="...">
         <ul class="pagination d-flex justify-content-end pagination-sm">
-            <li class="page-item active" aria-current="page">
-                <span class="page-link">1</span>
+            <? if ($_REQUEST["PAGE_ID"] - 1 >= 1): ?>
+                <a href="/demo/dashboard/<?= $_REQUEST["PAGE_ID"] - 1 ?>">
+                    <li class="page-item" aria-current="page">
+                        <span class="page-link">prev</span>
+                    </li>
+                </a>
+            <? endif; ?>
+            <li class="page-item mx-2 active" aria-current="page">
+                <span class="page-link"><?= $_REQUEST["PAGE_ID"] ?></span>
             </li>
+            <? if ($_REQUEST["PAGE_ID"] + 1 <= ceil($arResult["COUNT_PAGES"] / 5)): ?>
+                <a href="/demo/dashboard/<?= $_REQUEST["PAGE_ID"] + 1 ?>">
+                    <li class="page-item" aria-current="page">
+                        <span class="page-link">next</span>
+                    </li>
+                </a>
+            <? endif; ?>
         </ul>
     </nav>
 </div>
