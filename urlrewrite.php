@@ -8,6 +8,14 @@ $arUrlRewrite = array(
             'PATH' => '/demo/index.php',
             'SORT' => 100,
         ),
+    5 =>
+        array(
+            'CONDITION' => '#^/demo/dashboard/([0-9]+)#',
+            'RULE' => 'mode=read&PAGE_ID=$1',
+            'ID' => 'diary.diary',
+            'PATH' => '/demo/index.php',
+            'SORT' => 100,
+        ),
     4 =>
         array(
             'CONDITION' => '#^/demo/diary/editpost/([0-9]+)#',
