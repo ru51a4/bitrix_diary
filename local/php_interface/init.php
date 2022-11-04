@@ -23,8 +23,8 @@ class BBCode
         $generateHTML = function ($arr, $postId) {
             $result = '';
             foreach ($arr as $item) {
-                if ($item['tag'] == "image") {
-                    $result .= "<img class=\"post_image\" src=" . 'https://' . $item['t'] . ">";
+                if ($item['tag'] == "img") {
+                    $result .= "<img class=\"post_image\" src=". $item['t'] . ">";
                 } else if ($item['tag'] == "b") {
                     $result .= "<b>" . $item['t'] . "</b>";
                 } else if ($item["tag"] == "reply") {

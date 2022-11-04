@@ -24,10 +24,10 @@ if (CModule::IncludeModule('iblock')) {
         $arResult["ITEMS"][] = $arItem;
     }
     $arResult["REPLY"] = \BBCode::replyShit(array_map(function ($item) {
-        return ["id" => $item["Fields"]["ID"], "message" => $item["Fields"]["PREVIEW_TEXT"]];
+        return ["id" => $item["Fields"]["ID"], "message" => $item["Fields"]["~PREVIEW_TEXT"]];
     }, $arResult["ITEMS"]));
     $arResult["ITEMS"] = array_map(function ($item) {
-        $item["Fields"]['PREVIEW_TEXT'] = \BBCode::parseBB($item["Fields"]["PREVIEW_TEXT"]);
+        $item["Fields"]['~PREVIEW_TEXT'] = \BBCode::parseBB($item["Fields"]["~PREVIEW_TEXT"]);
         return $item;
     }, $arResult["ITEMS"]);
 
