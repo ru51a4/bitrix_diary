@@ -28,7 +28,7 @@
                                 style=" font-size: 10px; padding: 0px; max-height: 25px;"
                                 class="btn btn-primary btn-reply">>><?= $post["Fields"]["ID"] ?></button>
                     </div>
-                    <p class="card-text"> <?= $post["Fields"]["PREVIEW_TEXT"] ?>
+                    <p class="card-text"> <?= $post["Fields"]["~PREVIEW_TEXT"] ?>
                     </p>
                     <div class="card-bottom">
                         <div style="">
