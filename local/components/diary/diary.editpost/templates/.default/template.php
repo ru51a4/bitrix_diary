@@ -15,8 +15,11 @@
                                       rows="3"><?= $arResult["EL"]["PREVIEW_TEXT"] ?></textarea>
             </div>
             <div class="d-flex justify-content-end">
-                <button name="btn" type="submit" class="btn btn-primary mt-2 ml-2">
+                <button name="btn" type="submit" class="btn btn-primary mt-2 mx-2">
                     Редактировать
+                </button>
+                <button name="delete" type="submit" class="btn btn-primary mt-2">
+                    Удалить
                 </button>
             </div>
         </form>
