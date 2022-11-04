@@ -13,6 +13,8 @@ if (CModule::IncludeModule('iblock')) {
     ]);
     if (!isset($_REQUEST["PAGE_ID"])) {
         $_REQUEST["PAGE_ID"] = 1;
+    } else {
+        $_REQUEST["PAGE_ID"] = intval($_REQUEST["PAGE_ID"]);
     }
     while ($ob = $res->GetNextElement()) {
         $arItem['Fields'] = $ob->GetFields();
