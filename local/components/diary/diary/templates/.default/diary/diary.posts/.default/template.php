@@ -57,7 +57,7 @@
                           rows="3"></textarea>
             </div>
             <?
-            $cpt = initCaptha();
+            $cpt = initCaptcha();
             ?>
             <div class="d-flex my-4 justify-content-between">
                 <div>

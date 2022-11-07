@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$cpt = initCaptha();
+$cpt = initCaptcha();
 ?>
     <div class="row">
         <div class="card">

@@ -1,6 +1,6 @@
 <?php
 
-function initCaptha()
+function initCaptcha()
 {
     include_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/captcha.php");
     $cpt = new CCaptcha();
