@@ -23,9 +23,9 @@ $cpt->SetCodeCrypt($captchaPass);
                               rows="3"></textarea>
                 </div>
                 <div class="mb-3">
-                    <input name="captcha_code" value="<?=htmlspecialchars($cpt->GetCodeCrypt());?>" type="hidden">
+                    <input name="captcha_code" value="<?= htmlspecialchars($cpt->GetCodeCrypt()); ?>" type="hidden">
                     <input id="captcha_word" name="captcha_word" type="text">
-                    <img src="/bitrix/tools/captcha.php?captcha_code=<?=htmlspecialchars($cpt->GetCodeCrypt());?>">
+                    <img src="/bitrix/tools/captcha.php?captcha_code=<?= htmlspecialchars($cpt->GetCodeCrypt()); ?>">
                 </div>
                 <div class="mb-3">
                     <button type="submit" onclick="addBlog(event)" class="btn btn-primary">Добавить</button>
@@ -51,7 +51,12 @@ $cpt->SetCodeCrypt($captchaPass);
                 }
             });
             request.then(function (response) {
-                window.location.href = `/demo/diary/${response.data.id}`;
+                if (response?.data?.id) {
+                    window.location.href = `/demo/diary/${response.data.id}`;
+                } else {
+                    location.reload();
+
+                }
             });
         }
     </script>
