@@ -53,19 +53,11 @@
     <div class="row add-post">
         <div class="mt-3">
             <div>
-                        <textarea class="form-control" name="message" id="exampleFormControlTextarea1"
-                                  rows="3"></textarea>
+                <textarea class="form-control" name="message" id="exampleFormControlTextarea1"
+                          rows="3"></textarea>
             </div>
-
             <?
-            include_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/captcha.php");
-            $cpt = new CCaptcha();
-            $captchaPass = COption::GetOptionString("main", "captcha_password", "");
-            if (strlen($captchaPass) <= 0) {
-                $captchaPass = randString(10);
-                COption::SetOptionString("main", "captcha_password", $captchaPass);
-            }
-            $cpt->SetCodeCrypt($captchaPass);
+            $cpt = initCaptha();
             ?>
             <div class="d-flex my-4 justify-content-between">
                 <div>
@@ -73,7 +65,7 @@
                     <input id="captcha_word" name="captcha_word" type="text">
                     <img src="/bitrix/tools/captcha.php?captcha_code=<?= htmlspecialchars($cpt->GetCodeCrypt()); ?>">
                 </div>
-                <div class="d-flex justify-content-end">
+                <div>
                     <button type="submit" onclick="add(event)" class="btn btn-primary mt-2">Добавить</button>
                 </div>
             </div>

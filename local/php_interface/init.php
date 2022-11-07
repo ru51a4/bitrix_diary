@@ -1,5 +1,17 @@
 <?php
 
+function initCaptha()
+{
+    include_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/captcha.php");
+    $cpt = new CCaptcha();
+    $captchaPass = COption::GetOptionString("main", "captcha_password", "");
+    if (strlen($captchaPass) <= 0) {
+        $captchaPass = randString(10);
+        COption::SetOptionString("main", "captcha_password", $captchaPass);
+    }
+    $cpt->SetCodeCrypt($captchaPass);
+    return $cpt;
+}
 
 class BBCode
 {
@@ -24,7 +36,7 @@ class BBCode
             $result = '';
             foreach ($arr as $item) {
                 if ($item['tag'] == "img") {
-                    $result .= "<img class=\"post_image\" src=". $item['t'] . ">";
+                    $result .= "<img class=\"post_image\" src=" . $item['t'] . ">";
                 } else if ($item['tag'] == "b") {
                     $result .= "<b>" . $item['t'] . "</b>";
                 } else if ($item["tag"] == "reply") {
