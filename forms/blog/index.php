@@ -1,6 +1,14 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Новости");
+include_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/captcha.php");
+$cpt = new CCaptcha();
+$captchaPass = COption::GetOptionString("main", "captcha_password", "");
+if (strlen($captchaPass) <= 0) {
+    $captchaPass = randString(10);
+    COption::SetOptionString("main", "captcha_password", $captchaPass);
+}
+$cpt->SetCodeCrypt($captchaPass);
+
 ?>
     <div class="row">
         <div class="card">
@@ -14,7 +22,11 @@ $APPLICATION->SetTitle("Новости");
                     <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
                               rows="3"></textarea>
                 </div>
-
+                <div class="mb-3">
+                    <input name="captcha_code" value="<?=htmlspecialchars($cpt->GetCodeCrypt());?>" type="hidden">
+                    <input id="captcha_word" name="captcha_word" type="text">
+                    <img src="/bitrix/tools/captcha.php?captcha_code=<?=htmlspecialchars($cpt->GetCodeCrypt());?>">
+                </div>
                 <div class="mb-3">
                     <button type="submit" onclick="addBlog(event)" class="btn btn-primary">Добавить</button>
 
@@ -34,6 +46,8 @@ $APPLICATION->SetTitle("Новости");
                 data: {
                     param1: document.querySelector("input[name='name']").value,
                     param2: document.querySelector("textarea[name='description']").value,
+                    captcha_word: document.querySelector("input[name='captcha_word']").value,
+                    captcha_code: document.querySelector("input[name='captcha_code']").value
                 }
             });
             request.then(function (response) {

@@ -22,9 +22,12 @@ class DiaryAjaxController extends Controller
      * @param string $param1
      * @return array
      */
-    public static function addAction($param2 = '', $param1 = '')
+    public static function addAction($param2 = '', $param1 = '', $captcha_word, $captcha_code)
     {
-
+        global $APPLICATION;
+        if(!$APPLICATION->CaptchaCheckCode($captcha_word, $captcha_code)){
+            return;
+        }
         \Bitrix\Main\Loader::includeModule('iblock');
 
         $bs = new CIBlockSection;
