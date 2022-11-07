@@ -22,23 +22,28 @@ class PostAjaxController extends Controller
      * @param string $param1
      * @return array
      */
-    public static function addAction($param2 = '', $param1 = '')
+    public static function addAction($param2 = '', $param1 = '', $captcha_word, $captcha_code)
     {
+        global $APPLICATION;
+        if (!$APPLICATION->CaptchaCheckCode($captcha_word, $captcha_code)) {
+            return;
+        }
+
         $text = htmlspecialchars_decode($param1);
         \Bitrix\Main\Loader::includeModule('iblock');
         $el = new \CIBlockElement;
 
         $PROP = array();
-        Global $USER;
-        $arLoadProductArray = Array(
-            "MODIFIED_BY"    => $USER->GetID(), // элемент изменен текущим пользователем
+        global $USER;
+        $arLoadProductArray = array(
+            "MODIFIED_BY" => $USER->GetID(), // элемент изменен текущим пользователем
             "IBLOCK_SECTION_ID" => $param2,          // элемент лежит в корне раздела
-            "IBLOCK_ID"      => 5,
-            "PROPERTY_VALUES"=> $PROP,
-            "NAME"           => "Элемент",
-            "ACTIVE"         => "Y",            // активен
-            "PREVIEW_TEXT"   => $text,
-            "DETAIL_TEXT"    => "",
+            "IBLOCK_ID" => 5,
+            "PROPERTY_VALUES" => $PROP,
+            "NAME" => "Элемент",
+            "ACTIVE" => "Y",            // активен
+            "PREVIEW_TEXT" => $text,
+            "DETAIL_TEXT" => "",
         );
 
         $el->Add($arLoadProductArray);

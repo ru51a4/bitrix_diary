@@ -39,9 +39,9 @@
                             <? endforeach; ?>
                         </div>
                         <div>
-                            <?if($cUSER["ID"] == \Bitrix\Main\Engine\CurrentUser::get()->getId()):?>
-                            <a href="/demo/diary/editpost/<?= $post["Fields"]["ID"] ?>">edit</a>
-                            <?endif;?>
+                            <? if ($cUSER["ID"] == \Bitrix\Main\Engine\CurrentUser::get()->getId()): ?>
+                                <a href="/demo/diary/editpost/<?= $post["Fields"]["ID"] ?>">edit</a>
+                            <? endif; ?>
                         </div>
                     </div>
                 </div>
@@ -56,9 +56,29 @@
                         <textarea class="form-control" name="message" id="exampleFormControlTextarea1"
                                   rows="3"></textarea>
             </div>
-            <div class="d-flex justify-content-end">
-                <button type="submit" onclick="add(event)" class="btn btn-primary mt-2">Добавить</button>
+
+            <?
+            include_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/captcha.php");
+            $cpt = new CCaptcha();
+            $captchaPass = COption::GetOptionString("main", "captcha_password", "");
+            if (strlen($captchaPass) <= 0) {
+                $captchaPass = randString(10);
+                COption::SetOptionString("main", "captcha_password", $captchaPass);
+            }
+            $cpt->SetCodeCrypt($captchaPass);
+            ?>
+            <div class="d-flex my-4 justify-content-between">
+                <div>
+                    <input name="captcha_code" value="<?= htmlspecialchars($cpt->GetCodeCrypt()); ?>" type="hidden">
+                    <input id="captcha_word" name="captcha_word" type="text">
+                    <img src="/bitrix/tools/captcha.php?captcha_code=<?= htmlspecialchars($cpt->GetCodeCrypt()); ?>">
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" onclick="add(event)" class="btn btn-primary mt-2">Добавить</button>
+                </div>
             </div>
+
+
         </div>
     </div>
 <? endif; ?>
@@ -75,7 +95,9 @@
             mode: 'ajax',
             data: {
                 param1: document.querySelector("textarea").value,
-                param2: <?=$arParams["SECTION_ID"]?>
+                param2: <?=$arParams["SECTION_ID"]?>,
+                captcha_word: document.querySelector("input[name='captcha_word']").value,
+                captcha_code: document.querySelector("input[name='captcha_code']").value
             }
         });
         request.then(function (response) {
