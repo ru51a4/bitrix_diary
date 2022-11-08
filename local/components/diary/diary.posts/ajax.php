@@ -26,7 +26,7 @@ class PostAjaxController extends Controller
     {
         global $APPLICATION;
         if (!$APPLICATION->CaptchaCheckCode($captcha_word, $captcha_code)) {
-            return;
+            return ["status" => "captcha-error"];
         }
 
         $text = htmlspecialchars_decode($param1);
@@ -47,7 +47,7 @@ class PostAjaxController extends Controller
         );
 
         $el->Add($arLoadProductArray);
-        return "succsess";
+        return ["status" => "succsess"];
     }
 
 }
