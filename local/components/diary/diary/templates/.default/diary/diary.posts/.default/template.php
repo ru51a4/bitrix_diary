@@ -77,11 +77,16 @@
 <script>
 
     let init = true;
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector("textarea").value = JSON.parse(localStorage.getItem('message'));
+
+    });
 
     function add(event) {
         if (!init) {
             return;
         }
+        localStorage.setItem('message', JSON.stringify(document.querySelector("textarea").value));
         init = false;
         var request = BX.ajax.runComponentAction('diary:diary.posts', 'add', {
             mode: 'ajax',
@@ -93,7 +98,11 @@
             }
         });
         request.then(function (response) {
+            if (response?.data?.status === "succsess") {
+                localStorage.setItem('message', JSON.stringify(""));
+            }
             location.reload();
+
         });
     }
 
