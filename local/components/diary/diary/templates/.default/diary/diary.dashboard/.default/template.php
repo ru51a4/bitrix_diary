@@ -10,19 +10,7 @@
         <? foreach ($arResult["ITEMS"] as $diary): ?>
             <a href="/demo/diary/<?= $diary["Fields"]["ID"] ?>">
                 <div class="col-12 card d-flex flex-row">
-                    <div class="card-avatar d-flex flex-column justify-content-start">
-                        <div class="nickname nickname-author">
-                            <?
-                            $cUSER = CUser::GetByID($diary["Fields"]['MODIFIED_BY']);
-                            $cUSER = $cUSER->Fetch();
-                            ?>
-                            <b><?= $cUSER["LOGIN"] ?></b>
-                            <p class="status">
-                                Блогер
-                            </p></div>
-                        <img class="avatar"
-                             src="<?= ($cUSER["UF_AVATAR"]) ? $cUSER["UF_AVATAR"] : "http://ufland.moy.su/camera_a.gif" ?>">
-                    </div>
+                    <?=getUserProfile($diary["Fields"]['MODIFIED_BY']);?>
                     <div class="card-body">
                         <h5 class="card-title"><?= $diary["Fields"]["NAME"] ?></h5>
                         <p class="card-text"><?= $diary["Fields"]["DESCRIPTION"] ?></p>

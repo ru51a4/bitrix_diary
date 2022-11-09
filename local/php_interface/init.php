@@ -1,5 +1,44 @@
 <?php
 
+function getUserProfile($userId)
+{
+    $getStatusName = function ($id) {
+        $arFilter = array("IBLOCK_ID" => 6, "ELEMENT_ID" => $id, "ACTIVE_DATE" => "Y", "ACTIVE" => "Y");
+        $res = CIBlockElement::GetList(array(), $arFilter, false, array(), array());
+        while ($ob = $res->GetNextElement()) {
+            return $ob->GetFields()["NAME"];
+        }
+    };
+    ob_start();
+    ?>
+    <div class="card-avatar d-flex flex-column justify-content-start">
+        <div class="nickname nickname-author">
+            <?
+            $cUSER = CUser::GetByID($userId);
+            $cUSER = $cUSER->Fetch();
+            ?>
+            <b><?= $cUSER["LOGIN"] ?></b>
+            <? if (!$cUSER["UF_STATUS"]): ?>
+                <p class="status">
+                    Блогер
+                </p>
+            <? else: ?>
+                <? foreach ($cUSER["UF_STATUS"] as $statusId): ?>
+                    <p class="status">
+                        <?=$getStatusName($statusId);?>
+                    </p>
+                <? endforeach; ?>
+            <? endif; ?>
+        </div>
+        <img class="avatar"
+             src="<?= ($cUSER["UF_AVATAR"]) ? $cUSER["UF_AVATAR"] : "http://ufland.moy.su/camera_a.gif" ?>">
+    </div>
+    <?php
+    $html = ob_get_contents();
+    ob_end_clean();
+    return $html;
+}
+
 function initCaptcha()
 {
     include_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/captcha.php");
