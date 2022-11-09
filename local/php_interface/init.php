@@ -3,7 +3,7 @@
 function getUserProfile($userId)
 {
     $getStatusName = function ($id) {
-        $arFilter = array("IBLOCK_ID" => 6, "ELEMENT_ID" => $id, "ACTIVE_DATE" => "Y", "ACTIVE" => "Y");
+        $arFilter = array("IBLOCK_ID" => 6, "ID" => $id, "ACTIVE_DATE" => "Y", "ACTIVE" => "Y");
         $res = CIBlockElement::GetList(array(), $arFilter, false, array(), array());
         while ($ob = $res->GetNextElement()) {
             return $ob->GetFields()["NAME"];
