@@ -8,20 +8,7 @@
     <div class="d-flex flex-column justify-content-start">
         <? foreach ($arResult['ITEMS'] as $post): ?>
             <div class="col-12 card d-flex flex-row">
-                <div class="card-avatar d-flex flex-column justify-content-start">
-                    <div class="nickname">
-                        <?
-                        $cUSER = CUser::GetByID($post["Fields"]['MODIFIED_BY']);
-                        $cUSER = $cUSER->Fetch();
-                        ?>
-                        <b><?= $cUSER["LOGIN"] ?></b>
-                        <p class="status">
-                            блогер
-                        </p>
-                    </div>
-                    <img class="avatar"
-                         src="<?= ($cUSER["UF_AVATAR"]) ? $cUSER["UF_AVATAR"] : "http://ufland.moy.su/camera_a.gif" ?>">
-                </div>
+                <?=getUserProfile($post["Fields"]['MODIFIED_BY']);?>
                 <div class="card-body diary">
                     <div class="card--header">
                         <button id="<?= $post["Fields"]["ID"] ?>"
