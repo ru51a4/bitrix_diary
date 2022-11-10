@@ -22,12 +22,6 @@ if (CModule::IncludeModule('iblock')) {
             CIBlockElement::Delete(intval($_REQUEST["POST_ID"]));
             $count = CIBlockSection::GetSectionElementsCount($sectionId, []);
             if ($count == 0 || $is_op == 1) {
-                //delete all elements
-                $arFilter = array("IBLOCK_SECTION_ID" => $sectionId);
-                $res = CIBlockElement::GetList(array(), $arFilter, false, array(), array());
-                while ($ob = $res->GetNextElement()) {
-                    CIBlockElement::Delete($ob->GetFields()["ID"]);
-                }
                 //
                 CIBlockSection::Delete($sectionId);
                 header('Location: /demo/', true, 301);
