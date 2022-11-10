@@ -23,7 +23,7 @@ if (CModule::IncludeModule('iblock')) {
             $count = CIBlockSection::GetSectionElementsCount($sectionId, []);
             if ($count == 0 || $is_op == 1) {
                 //delete all elements
-                $arFilter = array("IBLOCK_SECTION_ID" => $arParams["SECTION_ID"]);
+                $arFilter = array("IBLOCK_SECTION_ID" => $sectionId);
                 $res = CIBlockElement::GetList(array(), $arFilter, false, array(), array());
                 while ($ob = $res->GetNextElement()) {
                     CIBlockElement::Delete($ob->GetFields()["ID"]);
