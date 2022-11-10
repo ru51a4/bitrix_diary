@@ -12,7 +12,7 @@
               method="post" class="col-12">
             <div>
                             <textarea class="form-control" name="message" id="exampleFormControlTextarea1"
-                                      rows="3"><?= $arResult["EL"]["PREVIEW_TEXT"] ?></textarea>
+                                      rows="3"><?= $arResult["EL"]["~PREVIEW_TEXT"] ?></textarea>
             </div>
             <div class="d-flex justify-content-end">
                 <button name="btn" type="submit" class="btn btn-primary mt-2 mx-2">
