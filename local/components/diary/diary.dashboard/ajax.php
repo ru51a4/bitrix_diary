@@ -25,7 +25,7 @@ class DiaryAjaxController extends Controller
     public static function addAction($param2 = '', $param1 = '', $captcha_word, $captcha_code)
     {
         global $APPLICATION;
-        if(!$APPLICATION->CaptchaCheckCode($captcha_word, $captcha_code)){
+        if (!$APPLICATION->CaptchaCheckCode($captcha_word, $captcha_code)) {
             return;
         }
         \Bitrix\Main\Loader::includeModule('iblock');
@@ -43,7 +43,7 @@ class DiaryAjaxController extends Controller
         $text = "init diary";
         $el = new \CIBlockElement;
 
-        $PROP = array();
+        $PROP = ["IS_OP" => 1];
         global $USER;
         $arLoadProductArray = array(
             "MODIFIED_BY" => $USER->GetID(), // элемент изменен текущим пользователем

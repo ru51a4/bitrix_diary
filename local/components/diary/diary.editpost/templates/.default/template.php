@@ -19,7 +19,7 @@
                     Редактировать
                 </button>
                 <button name="delete" type="submit" class="btn btn-primary mt-2">
-                    Удалить
+                    <?= ($arResult["is_op"]) ? "Удалить блог" : "Удалить" ?>
                 </button>
             </div>
         </form>

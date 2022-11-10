@@ -26,7 +26,7 @@
                             <? endforeach; ?>
                         </div>
                         <div>
-                            <? if ($cUSER["ID"] == \Bitrix\Main\Engine\CurrentUser::get()->getId()): ?>
+                            <? if ($post["Fields"]['MODIFIED_BY'] == \Bitrix\Main\Engine\CurrentUser::get()->getId()): ?>
                                 <a href="/demo/diary/editpost/<?= $post["Fields"]["ID"] ?>">edit</a>
                             <? endif; ?>
                         </div>
