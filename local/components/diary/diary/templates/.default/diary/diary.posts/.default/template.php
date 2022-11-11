@@ -39,6 +39,7 @@
 <? if ($USER->IsAuthorized()): ?>
     <div class="row add-post">
         <div class="mt-3">
+            <form onsubmit="add(event)">
             <div>
                 <textarea class="form-control" name="message" id="exampleFormControlTextarea1"
                           rows="3"></textarea>
@@ -53,10 +54,10 @@
                     <img src="/bitrix/tools/captcha.php?captcha_code=<?= htmlspecialchars($cpt->GetCodeCrypt()); ?>">
                 </div>
                 <div>
-                    <button type="submit" onclick="add(event)" class="btn btn-primary mt-2">Добавить</button>
+                    <button type="submit" class="btn btn-primary mt-2">Добавить</button>
                 </div>
             </div>
-
+            </form>
 
         </div>
     </div>
@@ -70,6 +71,7 @@
     });
 
     function add(event) {
+        event.preventDefault();
         if (!init) {
             return;
         }
